@@ -25,7 +25,7 @@ namespace emptycatches
             
             CSharpParser parser = new CSharpParser();
             
-            foreach(string fileName in Directory.GetFiles(args[0], "*.cs*", SearchOption.AllDirectories))
+            foreach(string fileName in Directory.GetFiles(args[0], "*.cs", SearchOption.AllDirectories))
             {
                 SyntaxTree syntaxTree = null;
 

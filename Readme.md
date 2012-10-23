@@ -8,12 +8,14 @@ Any contributions are welcome.
 
 This tool is distributed under the MIT License.
 
+I have added .net 4 and .net 4.5 support other versions to follow.
+
 ## Usage
 
 Empty catches only accepts one parameter which the folder location to search from.
 
 It will get all the *.cs files in that location to scan.
 
-	emptycatches.exe "c:\solution folder\"
+	emptycatches.exe "c:\solution folder"
 
 Hmm... muffins..
