@@ -46,6 +46,23 @@ namespace emptycatches
                     }
                     else
                     {
+                        if (args.Contains("--enforce-logging"))
+                        {
+                            var catchHasLogging = false;
+                            foreach (var catchStatement in node.Body.Statements)
+                            {
+                                catchHasLogging = catchHasLogging || catchStatement.GetText().ToLower().Contains("log");
+                            }
+                            if (!catchHasLogging)
+                            {
+                                var fileInfo = new FileInfo(fileName);
+                                Console.WriteLine("Error: Found a catch without logging on {0} line {1}:", fileInfo.FullName, node.StartLocation.Line);
+                                Console.WriteLine(string.Join(Environment.NewLine, node.Body.Statements));
+                                Console.WriteLine();
+                                errorCount++;
+                            }
+                        }
+
                         //TODO just scanning the first instance will change that to loop through them all at some point.
                         ThrowStatement throwStatement = node.Descendants.OfType<ThrowStatement>().FirstOrDefault();
 
